@@ -1,0 +1,10 @@
+{
+  "region" : "optional",
+
+  "instances"  : 
+  {
+    "nickname"    : "instance-id",
+    "nickname"    : "instance-id",
+    "nickname"    : "instance-id",
+  }
+}

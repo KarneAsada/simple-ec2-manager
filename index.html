@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Simple EC2 Manager</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link href="style.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Application template -->
+  <script type="text/x-handlebars" data-template-name="application">
+    <div class="container-fluid">
+      <div class="row-fluid span12">
+        <h1>Simple EC2 Manager</h1>
+        {{#if errorMessage}}
+        <div class="alert alert-error span6">
+          <strong>Error</strong> {{errorMessage}}
+        </div>
+        {{/if}}    
+        {{#if successMessage}}
+        <div class="alert alert-success span6">
+          <strong>Success</strong> {{successMessage}}
+        </div>
+        {{/if}}    
+        {{outlet}}
+      </div>        
+    </div>
+  </script>
+
+  <!-- Instances Template -->
+  <script type="text/x-handlebars" data-template-name="instances">
+        {{#if controller.length}}
+        <table class="table table-striped table-hover">
+          <thead>
+            <th>Instance</th>
+            <th>Status</th>
+            <th>&nbsp;</th>
+          </thead>
+          <tbody>
+            {{#each instance in controller}}
+              {{#with instance}}
+              <tr>
+                <td>{{name}}</td>
+                <td class="span3">{{status}}</td>
+                <td class="span3">
+                  <a {{bindAttr class=":btn status btnClass statusClass"}} {{action update this}}>
+                    {{#if iconClass}}
+                    <i {{bindAttr class="iconClass :icon-white"}}></i>
+                    {{/if}}
+                    {{btnLabel}}
+                  </a>
+                </td>
+              </tr>
+              {{/with}}
+            {{/each}}
+          </tbody>
+        </table>
+        {{/if}}
+  </script>
+
+
+</body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ember.js/1.0.pre/ember-1.0.pre.js"></script>
+<script src="app.js"></script>
+</html>
