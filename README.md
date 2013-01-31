@@ -10,3 +10,11 @@ Each member of my dev team has their own ec2 instance to use as a staging server
 * Copy the files to your webserver and run!
 
 **Simple, right?!**
+
+## Ingredients
+
+I built this using:
+* [AWS SDK For PHP 1.x](https://github.com/amazonwebservices/aws-sdk-for-php)
+* [Ember](http://emberjs.com/)
+* [jQuery](http://jquery.com/)
+* [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
