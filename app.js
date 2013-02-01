@@ -121,7 +121,7 @@ App.Instance.reopenClass({
               ? 'btn-danger' 
               : 'disabled'
               ;
-  },//.property('status'),
+  },
 
   btnLabel: function(status) {
     return status == 'running' 
@@ -130,7 +130,7 @@ App.Instance.reopenClass({
               ? 'Start' 
               : 'Pending'
               ;
-  },//.property('status'),
+  },
 
   statusClass: function(status) {
     //var status = this.get('status');
@@ -140,7 +140,7 @@ App.Instance.reopenClass({
             : 'pending'
             ;
     return 'status-' + css;
-  },//.property('status'),
+  },
 
   iconClass: function(status) {
     //var status = this.get('status');
@@ -150,7 +150,7 @@ App.Instance.reopenClass({
               ? 'icon-play' 
               : false
               ;
-  },//.property('status'),
+  },
 
   end: 'Instance'
 });

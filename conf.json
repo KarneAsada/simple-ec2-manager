@@ -1,5 +1,5 @@
 {
-  "region" : "optional",
+  "region" : "(optional) defaults to ec2.us-east-1.amazonaws.com",
 
   "instances"  : 
   {

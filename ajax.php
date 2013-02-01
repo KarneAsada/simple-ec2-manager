@@ -6,8 +6,8 @@
 require_once 'aws-sdk-for-php/sdk.class.php';
 
 // Set these to your AWS credentials
-// I recommend creating a user with a group policy that 
-// only has access to ec2 describing, stopping and starting
+// ** I recommend creating a user with a group policy that 
+// ** only has access to ec2 describe status, stopping and starting
 $credentials = array(
     'key'     => '',
     'secret'  => '',
@@ -86,7 +86,6 @@ try {
   foreach( $ec2Resp->body->instanceStatusSet->item as $instance ) {
     $statuses[ $instanceMap[$instance->instanceId->to_string()] ] 
       = $instance->instanceState->name->to_string();
-    //print_r($instance);
   }
 
   // Sort the statuses by name
