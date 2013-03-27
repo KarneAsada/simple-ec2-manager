@@ -73,19 +73,20 @@ if (isset($_GET['action'])) {
 // Get statuses of instances
 $statuses = array();
 try {
-  $ec2Resp = $ec2->describe_instance_status(array(
-          'InstanceId' => array_values($config['instances']),
-          'IncludeAllInstances' => true,
-          ));
+  $ec2Resp = $ec2->describe_instance_status();
 
   if ($ec2Resp->status != 200) {
-    throw new Exception('ec2 Request Failed - Status: '.$ec2Resp->status);
+    throw new Exception('ec2 Request Failed - Status: '.$ec2Resp->status
+      ' - ' . $ec2Resp->body->Errors->Error->Message
+      );
   }
 
   $instanceMap = array_flip($config['instances']);
   foreach( $ec2Resp->body->instanceStatusSet->item as $instance ) {
-    $statuses[ $instanceMap[$instance->instanceId->to_string()] ] 
-      = $instance->instanceState->name->to_string();
+    if ($instanceMap[$instance->instanceId->to_string()]) {
+      $statuses[ $instanceMap[$instance->instanceId->to_string()] ] 
+        = $instance->instanceState->name->to_string();
+    }
   }
 
   // Sort the statuses by name
