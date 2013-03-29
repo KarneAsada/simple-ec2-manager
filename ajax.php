@@ -73,7 +73,9 @@ if (isset($_GET['action'])) {
 // Get statuses of instances
 $statuses = array();
 try {
-  $ec2Resp = $ec2->describe_instance_status();
+  $ec2Resp = $ec2->describe_instance_status(array(
+    'IncludeAllInstances' => true
+    ));
 
   if ($ec2Resp->status != 200) {
     throw new Exception('ec2 Request Failed - Status: '.$ec2Resp->status
